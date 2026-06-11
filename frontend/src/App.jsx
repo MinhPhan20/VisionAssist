@@ -78,7 +78,7 @@ function App() {
           }
         }, 'image/jpeg', 0.9);
       }
-    }, 140); // ~7 FPS gives a great balance of accuracy without internet delay lag
+    }, 1000); // Change this from 140 to 1000 to save the cloud CPU
 
     // Clean up connections on window close
     return () => {

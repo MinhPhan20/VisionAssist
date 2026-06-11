@@ -19,6 +19,9 @@ app.add_middleware(
 
 # Load the highly accurate small model
 model = YOLO("yolov8s.pt")
+@app.get("/")
+async def health_check():
+    return {"status": "Render is happy, server is alive!"}
 
 @app.websocket("/ws/vision")
 async def vision_websocket_endpoint(websocket: WebSocket):
