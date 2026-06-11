@@ -58,7 +58,8 @@ async def vision_websocket_endpoint(websocket: WebSocket):
                     proximity = "Close" if screen_area_used > 0.05 else "Far"
 
                     # Tune thresholds to filter out hallucinations
-                    required_confidence = 0.60 if ai_guess == "cell phone" else 0.30
+                    # TUNING: Drop standards for the Nano model so it stops ignoring everything
+                    required_confidence = 0.40 if ai_guess == "cell phone" else 0.15
 
                     if confidence > required_confidence and ai_guess in allowed_items:
                         if ai_guess == "cup" or ai_guess == "bottle":
@@ -71,7 +72,8 @@ async def vision_websocket_endpoint(websocket: WebSocket):
                             "confidence": f"{int(confidence * 100)}%",
                             "proximity": proximity
                         })
-
+            # Print to the Render terminal so we can see what the AI is finding
+            print(f"🔍 Processed frame: Found {len(frame_detections)} valid items.")
             # Send the clean AI telemetry JSON packet back up to the browser immediately
             await websocket.send_text(json.dumps({
                 "status": "Online",
