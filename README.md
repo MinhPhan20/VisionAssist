@@ -15,13 +15,15 @@ VisionAssist is a full-stack application that leverages Machine Learning for rea
 
 ## ⚙️ Local Setup Instructions
 
-### 1. Start the Backend
+### 1. Start the Frontend
+cd frontend
+npm install
+npm run dev
+
+### 2. Start the Backend
 Navigate to the `backend` directory, activate the virtual environment, and start the FastAPI server:
 ```bash
 cd backend
 venv\Scripts\activate
 uvicorn main:app --reload
 
-cd frontend
-npm install
-npm run dev
