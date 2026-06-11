@@ -1,0 +1,12 @@
+# Python / Backend
+backend/venv/
+__pycache__/
+*.pyc
+
+# React / Frontend
+frontend/node_modules/
+frontend/dist/
+
+# System Files
+.DS_Store
+.idea/
