@@ -1,10 +1,15 @@
 import asyncio
+import torch
+import gc
 import json
 import cv2
 import numpy as np
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from ultralytics import YOLO
+
+# Force PyTorch to use minimal memory on the free cloud tier
+torch.set_num_threads(1)
 
 app = FastAPI()
 
@@ -79,6 +84,10 @@ async def vision_websocket_endpoint(websocket: WebSocket):
                 "status": "Online",
                 "detections": frame_detections
             }))
+            # THE FIX: Manually delete heavy variables and empty the RAM trash can
+            del frame
+            del results
+            gc.collect()
 
     except WebSocketDisconnect:
         print("🛑 Frontend disconnected from AI Pipeline.")
