@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     // Connect to your local FastAPI WebSocket server
     // When deployed, this can point to a public server address
-    const wsUrl = ' https://visionassist-ai.onrender.com';
+    const wsUrl = ' wss://visionassist-ai.onrender.com/ws/vision';
     wsRef.current = new WebSocket(wsUrl);
 
     wsRef.current.onopen = () => {
