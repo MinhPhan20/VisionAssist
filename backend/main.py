@@ -55,7 +55,7 @@ async def vision_websocket_endpoint(websocket: WebSocket):
                     proximity = "Close" if screen_area_used > 0.05 else "Far"
 
                     # Tune thresholds to filter out hallucinations
-                    required_confidence = 0.80 if ai_guess == "cell phone" else 0.50
+                    required_confidence = 0.60 if ai_guess == "cell phone" else 0.30
 
                     if confidence > required_confidence and ai_guess in allowed_items:
                         if ai_guess == "cup" or ai_guess == "bottle":

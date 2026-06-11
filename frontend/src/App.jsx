@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     // Connect to your local FastAPI WebSocket server
     // When deployed, this can point to a public server address
-    const wsUrl = 'ws://localhost:8000/ws/vision';
+    const wsUrl = ' https://visionassist-ai.onrender.com';
     wsRef.current = new WebSocket(wsUrl);
 
     wsRef.current.onopen = () => {
@@ -76,7 +76,7 @@ function App() {
               wsRef.current.send(buffer);
             });
           }
-        }, 'image/jpeg', 0.6); // 0.6 compresses quality slightly to maximize transmission speed
+        }, 'image/jpeg', 0.9);
       }
     }, 140); // ~7 FPS gives a great balance of accuracy without internet delay lag
 
