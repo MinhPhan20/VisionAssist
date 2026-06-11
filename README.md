@@ -1,4 +1,5 @@
 # 👁️ VisionAssist: Real-Time AI Telemetry Dashboard
+**[🔴 View Live Front-End Demo Here](visionassistants.netlify.app)**
 
 VisionAssist is a full-stack application that leverages Machine Learning for real-time computer vision. It streams a live webcam feed through a custom Python/FastAPI backend, runs object detection using YOLOv8, and feeds telemetry data to a React-based spatial awareness dashboard.
 
