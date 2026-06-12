@@ -65,7 +65,7 @@ async def vision_websocket_endpoint(websocket: WebSocket):
                     # Tune thresholds to filter out hallucinations
                     # TUNING: Drop standards for the Nano model so it stops ignoring everything
                     # Change this line to make the AI extremely strict about claiming it sees a phone
-                    required_confidence = 0.65 if ai_guess == "cell phone" else 0.20
+                    required_confidence = 0.65 if ai_guess == "cell phone" else 0.05
 
                     if confidence > required_confidence and ai_guess in allowed_items:
                         if ai_guess == "cup" or ai_guess == "bottle":
