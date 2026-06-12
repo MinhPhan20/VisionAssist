@@ -26,6 +26,7 @@ app.add_middleware(
 model = YOLO("yolov8n.pt")
 @app.get("/")
 async def health_check():
+    gc.collect();
     return {"status": "Render is happy, server is alive!"}
 
 @app.websocket("/ws/vision")
