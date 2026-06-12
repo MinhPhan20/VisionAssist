@@ -22,8 +22,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load the highly accurate small model
-model = YOLO("yolov8s.pt")
+# Change yolov8s.pt (Small) to yolov8n.pt (Nano)
+model = YOLO("yolov8n.pt")
 @app.get("/")
 async def health_check():
     return {"status": "Render is happy, server is alive!"}
@@ -64,7 +64,8 @@ async def vision_websocket_endpoint(websocket: WebSocket):
 
                     # Tune thresholds to filter out hallucinations
                     # TUNING: Drop standards for the Nano model so it stops ignoring everything
-                    required_confidence = 0.40 if ai_guess == "cell phone" else 0.15
+                    # Change this line to make the AI extremely strict about claiming it sees a phone
+                    required_confidence = 0.65 if ai_guess == "cell phone" else 0.20
 
                     if confidence > required_confidence and ai_guess in allowed_items:
                         if ai_guess == "cup" or ai_guess == "bottle":

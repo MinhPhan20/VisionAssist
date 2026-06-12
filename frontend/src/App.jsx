@@ -13,6 +13,8 @@ function App() {
   const streamRef = useRef(null);
 
   useEffect(() => {
+      // ⬇️ UNCOMMENT THIS LINE for local testing
+//     const wsUrl = 'ws://localhost:8000/ws/vision';
     // Connect to your local FastAPI WebSocket server
     // When deployed, this can point to a public server address
     const wsUrl = ' wss://visionassist-ai.onrender.com/ws/vision';
@@ -98,7 +100,7 @@ function App() {
     <div className="dashboard-container">
       {/* Top Banner Header */}
       <header className="dashboard-header">
-        <h1>VisionAssist AI Dashboard</h1>
+        <h1>VisionAssist</h1>
         <div className={`status-badge ${status.includes('Online') ? 'status-online' : 'status-offline'}`}>
           {status}
         </div>
