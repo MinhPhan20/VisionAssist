@@ -26,6 +26,7 @@ function App() {
 
     wsRef.current.onmessage = (event) => {
       const data = JSON.parse(event.data);
+      console.log("📡 Raw AI Packet:", data);
       if (data.detections) {
         setDetections(data.detections);
       }
